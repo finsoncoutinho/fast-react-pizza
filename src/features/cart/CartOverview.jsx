@@ -4,9 +4,9 @@ import { getTotalCartPrice, getTotalCartQuantity } from "./cartSlice";
 import { formatCurrency } from "../../utils/helpers";
 
 function CartOverview() {
-  const totalCartQuantity = useSelector((state) => getTotalCartQuantity(state));
+  const totalCartQuantity = useSelector(getTotalCartQuantity);
 
-  const totalCartPrice = useSelector((state) => getTotalCartPrice(state));
+  const totalCartPrice = useSelector(getTotalCartPrice);
 
   if (!totalCartQuantity) return null;
 
