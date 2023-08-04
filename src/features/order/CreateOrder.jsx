@@ -19,6 +19,7 @@ const isValidPhone = (str) =>
 
 function CreateOrder() {
   const [withPriority, setWithPriority] = useState(false);
+
   const {
     username,
     status: addressStatus,
@@ -27,14 +28,15 @@ function CreateOrder() {
     error: errorAddress,
   } = useSelector((state) => state.user);
 
+  const cart = useSelector(getCart);
+  const totalCartPrice = useSelector(getTotalCartPrice);
+
   const isLoadingAddress = addressStatus === "loading";
   const navigation = useNavigation();
   const isSubmitting = navigation.state === "submitting";
   const formErrors = useActionData();
   const dispatch = useDispatch();
 
-  const cart = useSelector(getCart);
-  const totalCartPrice = useSelector(getTotalCartPrice);
   const priorityPrice = withPriority ? totalCartPrice * 0.2 : 0;
   const totalPrice = totalCartPrice + priorityPrice;
 
